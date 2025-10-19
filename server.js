@@ -3,6 +3,12 @@ const { google } = require("googleapis");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(
+  cors({
+    origin: "https://www.tdwmarine.com",
+  })
+);
+
 app.get("/deadline", async (req, res) => {
   const email = req.query.email;
   if (!email) return res.status(400).json({ error: "Missing email parameter" });
